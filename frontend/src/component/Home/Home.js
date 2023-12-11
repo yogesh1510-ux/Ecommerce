@@ -13,6 +13,7 @@ import f3 from "../../images/features/f3.png";
 import f4 from "../../images/features/f4.png";
 import f5 from "../../images/features/f5.png";
 import f6 from "../../images/features/f6.png";
+import { useNavigate } from "react-router-dom";
 
 // const product={
 //   name:"orange t-shirt",
@@ -28,6 +29,11 @@ const Home = () => {
   const dispatch=useDispatch();
 
   const {loading,products,error} = useSelector(state=> state.products);
+  const navigate=useNavigate();
+
+  const goShoping = () =>{
+      navigate("/products");
+  }
 
   useEffect(() => {
     
@@ -68,7 +74,7 @@ const Home = () => {
         <h2>Super value Deals</h2>
         <h1>On All Products</h1>
         <p>Save more with coupons and up to 70% off! </p>
-        <button>Shop Now</button>
+        <button onClick={()=> goShoping()}>Shop Now</button>
 
        </div>
 
