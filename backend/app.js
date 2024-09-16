@@ -6,6 +6,7 @@
  const fileUpload = require("express-fileupload");
  const dotenv=require('dotenv');
  const path = require("path");
+ const cors = require("cors");
 
  dotenv.config({path:"backend/config/config.env"});
 
@@ -14,6 +15,14 @@
  const users = require("./routes/userRoutes");
  const order=require("./routes/orderRoutes");
  const payment = require("./routes/paymentRoites");
+
+ app.use(cors({
+  origin: (origin, callback) => {
+   
+    callback(null, origin);
+  },
+  credentials: true,  
+}));
 
  app.use(express.json());
  app.use(cookieParser());
